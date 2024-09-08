@@ -1,0 +1,10 @@
+PRGNAM="aquamarine"
+VERSION="0.4.0"
+HOMEPAGE="https://hyprland.org"
+DOWNLOAD="UNSUPPORTED"
+MD5SUM=""
+DOWNLOAD_x86_64="https://github.com/hyprwm/aquamarine.git
+MD5SUM_x86_64=""
+REQUIRES="hyprwayland-scanner hyprutils"
+MAINTAINER="Damian Perticone"
+EMAIL="mjolnirdam@gmail.com"
