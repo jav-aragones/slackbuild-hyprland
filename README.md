@@ -8,7 +8,7 @@ NOTA: En el archivo /usr/share/wayland-sessions/hyprland.desktop,
 
 hay que cambiar la línea Exec para que quede:
 
-/usr/share/wayland-sessions/hyprland.desktop
+Exec=dbus-launch --sh-syntax --exit-with-session Hyprland
 
 Esto permite poder montar unidades extraibles como usuario no root.
 
