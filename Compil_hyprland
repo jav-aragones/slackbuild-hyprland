@@ -1,0 +1,18 @@
+# Orden de compilación hyprland
+
+hyprutils
+pugixml
+hyprwayland-scanner
+seatd
+hyprlang         
+tomlplusplus
+libdisplay-info
+libliftoff
+hyprcursor
+aquamarine
+hyprland
+         
+
+          
+               
+     
