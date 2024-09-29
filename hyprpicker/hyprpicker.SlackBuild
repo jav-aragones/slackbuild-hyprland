@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=hyprpicker
-VERSION=${VERSION:-0.3.0}
+VERSION=${VERSION:-0.4.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -77,11 +77,18 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+cmake --no-warn-unused-cli \
+	-DCMAKE_BUILD_TYPE:STRING=Release  \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-S . -B ./build
 
-cmake --build ./build --config Release --target hyprpicker -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+cmake --build ./build \
+	--config Release \
+	--target hyprpicker -j`nproc 2>/dev/null \
+	|| getconf _NPROCESSORS_CONF`
 
 cd build/
+
 make install DESTDIR=$PKG
 
 cd ..
