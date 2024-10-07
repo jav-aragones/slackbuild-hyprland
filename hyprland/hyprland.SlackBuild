@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=hyprland
 BINNAM=Hyprland
 VERSION=${VERSION:-0.44.0}	
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -97,6 +97,12 @@ cd ../
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a LICENSE README.md VERSION $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+# Copy hyprland.desktop with dbus
+
+mv $PKG/usr/share/wayland-sessions/hyprland.desktop $PKG/usr/share/wayland-sessions/hyprland.desktop.orig
+cat $CWD/hyprland.desktop > $PKG/usr/share/wayland-sessions/hyprland.desktop
+
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
