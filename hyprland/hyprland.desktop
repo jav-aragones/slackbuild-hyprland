@@ -1,5 +1,8 @@
 [Desktop Entry]
 Name=Hyprland
 Comment=An intelligent dynamic tiling Wayland compositor
-Exec=Hyprland
+#Exec=Hyprland
+# De sway.desktop
+# De gentoo wiki. dbus-run-session Hyprland
+Exec=dbus-launch --sh-syntax --exit-with-session Hyprland
 Type=Application
