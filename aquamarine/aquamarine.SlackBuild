@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=aquamarine
-VERSION=${VERSION:-0.4.0}	
+VERSION=${VERSION:-0.4.3}	
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
@@ -68,6 +68,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM
+#tar xvf $CWD/v0.4.3.tar.gz
 git clone https://github.com/hyprwm/aquamarine.git
 cd $PRGNAM
 chown -R root:root .
