@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=hyprland
 BINNAM=Hyprland
-VERSION=${VERSION:-0.42.0}	
+VERSION=${VERSION:-0.44.1}	
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
@@ -69,8 +69,17 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $BINNAM
-mkdir -p $PRGNAM
+mkdir -p $PRGNAM-$VERSION
+
+#
+# tar xvf $CWD/v0.44.1.tar.gz
+#
+# NOTA: La compilación de la versión estable, la 0.44.1, da error al no poder instalar
+# el paquete dis86, ni desde slackbuilds.org, ni desde las fuentes. Por esto uso la versión git.
+#
+
 git clone --recursive https://github.com/hyprwm/Hyprland
+
 cd $BINNAM
 chown -R root:root .
 find -L . \
@@ -83,8 +92,8 @@ mkdir build/
 cd build/
 
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release \
+	-DNO_SYSTEMD:STRING=true \
        	-DCMAKE_INSTALL_PREFIX:PATH=/usr ..
-
 make all
 make install DESTDIR=$PKG
 
