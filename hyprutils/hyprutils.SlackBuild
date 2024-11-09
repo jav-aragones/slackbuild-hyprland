@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=hyprutils
-VERSION=${VERSION:-0.2.3}	
+VERSION=${VERSION:-0.2.4}	
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
@@ -69,7 +69,8 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM
 mkdir -p $PRGNAM
-#tar xvf $CWD/v0.2.3.tar.gz
+#tar xvf $CWD/v0.2.4.tar.gz
+# Se usa la git, ya que permite compilar, las fuentes provistas no.
 git clone https://github.com/hyprwm/hyprutils.git
 cd $PRGNAM
 chown -R root:root .
