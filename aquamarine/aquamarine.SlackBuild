@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=aquamarine
 VERSION=${VERSION:-0.4.4}	
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -67,11 +67,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM
-#tar xvf $CWD/v0.4.4.tar.gz
-# Se usa la versión git, ya que las fuentes proveen las librerias compiladas.
-git clone https://github.com/hyprwm/aquamarine.git
-cd $PRGNAM
+rm -rf $PRGNAM || rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/aquamarine-0.4.4.tar.gz
+cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \

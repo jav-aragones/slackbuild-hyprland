@@ -25,9 +25,9 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=hyprland
-BINNAM=Hyprland
+BINNAM=hyprland-source
 VERSION=${VERSION:-0.45.0}	
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -69,11 +69,8 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $BINNAM
-mkdir -p $PRGNAM-$VERSION
-#tar xvf $CWD/source-v0.45.0.tar.gz
-# Si bien la version source-v0.45.0.tar.gz permite compilar todo, uso
-# la versión git por los ajustes de última hora.
-git clone --recursive https://github.com/hyprwm/Hyprland.git
+#mkdir -p $PRGNAM-$VERSION
+tar xvf $CWD/source-v0.45.0.tar.gz
 cd $BINNAM
 chown -R root:root .
 find -L . \
