@@ -25,8 +25,8 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=aquamarine
-VERSION=${VERSION:-0.4.4}	
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-0.4.5}	
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -68,7 +68,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM || rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/aquamarine-0.4.4.tar.gz
+tar xvf $CWD/aquamarine-0.4.5.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
