@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=aquamarine
-VERSION=${VERSION:-0.4.5}	
+VERSION=${VERSION:-0.5.0}	
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
@@ -68,7 +68,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM || rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/aquamarine-0.4.5.tar.gz
+tar xvf $CWD/v$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -76,15 +76,16 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
- mkdir build/
- cd build/
+ 
+mkdir build/
+cd build/
 
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release  \
 	-DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 make
 make install  DESTDIR=$PKG
 
- cd ..
+cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
