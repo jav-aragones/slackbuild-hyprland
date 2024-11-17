@@ -98,6 +98,11 @@ mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a LICENSE README.md VERSION $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
+# Se modifica /usr/share/wayland-sessions/hyprland.desktop para montar pendrives.
+
+mv $PKG/usr/share/wayland-sessions/hyprland.desktop $PKG/usr/share/wayland-sessions/hyprland.desktop.old
+cat $CWD/hyprland.desktop > $PKG/usr/share/wayland-sessions/hyprland.desktop
+
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
