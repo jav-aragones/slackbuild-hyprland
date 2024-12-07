@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=hyprpaper
 VERSION=${VERSION:-0.7.1}	
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -43,6 +43,8 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
 fi
+
+wget -c https://github.com/hyprwm/hyprpaper/archive/refs/tags/v$VERSION.tar.gz
 
 TMP=${TMP:-/tmp/SBo}	
 PKG=$TMP/package-$PRGNAM
@@ -69,7 +71,7 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 #mkdir -p $PRGNAM
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/v$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
